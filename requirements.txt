@@ -1,0 +1,18 @@
+streamlit==1.58.0
+pandas==2.2.3
+plotly==5.24.1
+
+# Multi-language parsing (Day 12/13)
+# NOTE: tree-sitter-languages 1.10.x only works with tree-sitter<0.22,
+# newer tree-sitter versions changed the Language() constructor and
+# will raise "__init__() takes exactly 1 argument (2 given)".
+tree-sitter==0.21.3
+tree-sitter-languages==1.10.2
+
+# PDF report generation
+reportlab==4.2.5
+
+# AI features (Day 14, 17, chatbot) — needs a free key from
+# https://console.groq.com/keys in a .env file (see .env.example)
+groq==1.5.0
+python-dotenv==1.0.1
