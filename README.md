@@ -133,6 +133,21 @@ Sample files are included under `samples/` — several languages, intentionally 
 
 Days 1–11 established the core: AST parsing, static analysis, complexity estimation, PDF reporting, and SQLite history. Days 12–18 added multi-language support via Tree-sitter, AI-powered bug/security/refactoring analysis via Groq, and a code similarity checker.
 
+
+## 🔭 Future Scope
+
+- **CI/CD Integration** — GitHub Actions / GitLab CI plugin to run reviews automatically on every pull request and post results as PR comments
+- **VS Code Extension** — bring inline AI review, bug detection, and refactoring suggestions directly into the editor
+- **Multi-file / repo-level analysis** — currently single-file focused; extend to whole-repository scans with cross-file dependency and duplicate-code detection
+- **Custom rule engine** — let teams define their own linting/security rules on top of the built-in checks
+- **Model flexibility** — support additional LLM providers (OpenAI, Anthropic, local models via Ollama) alongside Groq, with a pluggable backend
+- **Authentication & multi-user support** — user accounts so review history and reports are scoped per user/team instead of a single shared SQLite file
+- **Diff-aware refactoring** — show refactored code as a side-by-side diff instead of a full rewrite, making changes easier to review
+- **Test generation** — AI-generated unit tests for the analyzed file, alongside the existing bug/security findings
+- **Dockerized deployment** — a `Dockerfile` + `docker-compose.yml` for one-command setup, removing the manual venv/env steps
+- **Richer language coverage** — extend Tree-sitter support to PHP, Ruby, Swift, and C#
+- **Team dashboards** — aggregate trends across a codebase over time (bug counts, complexity, security issues) rather than per-file history only
+
 ## 👤 Author
 
 **Thanniru Rishith**
