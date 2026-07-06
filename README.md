@@ -1,125 +1,337 @@
-# 🤖 AI Code Reviewer
+🤖 AI Code Reviewer
 
-A multi-language, AI-powered code review assistant built with **Streamlit**,
-**Tree-sitter**, and **Groq (Llama 3.3)**. Upload a source file and get
-structural analysis, static warnings, AI-detected bugs, a security scan,
-a deep AI review, refactoring suggestions, a code Q&A chatbot, a
-duplicate-code checker, and a downloadable PDF report — all in one app.
+An AI-powered, multi-language code review assistant built using Streamlit, Tree-sitter, Python, SQLite, and Groq Llama 3.3.
 
-## ✨ Features
+Analyze source code across multiple programming languages, detect bugs, scan for security vulnerabilities, generate AI-powered code reviews, compare code similarity, chat with your code, and export professional PDF reports—all from a single interactive dashboard.
 
-### Core Analysis
-- 📋 **AST-based parsing** for Python; **Tree-sitter parsing** for Java, C,
-  C++, JavaScript, TypeScript, Go, Rust and Kotlin
-- 📊 Functions / classes / imports / loops / conditionals extraction
-- 📈 Interactive dashboards & charts (Plotly)
-- ⏱ Time-complexity estimation
-- 🗄 SQLite analysis history with search, trend graph, and clear-history
-- 📄 One-click downloadable PDF report
+🚀 Live Demo
 
-### AI-Powered Review (Day 12–18)
-| Day | Feature | Description |
-|-----|---------|--------------|
-| 12 | Multi-Language Support | Automatic language detection + Tree-sitter parsing/highlighting/syntax tree for 9 languages |
-| 13 | Multi-Language Code Analysis | Function/class/import/loop/conditional extraction, dashboards & charts for every supported language |
-| 14 | AI Code Review | Groq-powered bug detection, code smells, security analysis, performance & improvement suggestions |
-| 15 | AI Bug Detection | Infinite loops, division by zero, dead code, duplicate code, unused variables |
-| 16 | Security Scanner | SQL injection, hardcoded secrets, unsafe `eval()`/`exec()`, weak hashing, command injection |
-| 17 | AI Refactoring | AI-generated refactored code + explanation, without changing behavior |
-| 18 | Code Similarity Checker | Compare two files: similarity %, matching blocks, shared functions/classes |
+Demo: (https://ai-code-reviewer-ezoq4xnesmqfdytcxzyir2.streamlit.app/)
 
-## 🧱 Tech Stack
+GitHub Repository:
+https://github.com/RishithThanniru/AI-Code-Review
 
-- **Frontend / App:** Streamlit
-- **Parsing:** Python `ast`, Tree-sitter (`tree-sitter-languages`)
-- **AI:** Groq API (`llama-3.3-70b-versatile`)
-- **Data:** SQLite, Pandas
-- **Visualization:** Plotly
-- **Reports:** ReportLab (PDF)
+✨ Features
 
-## 📁 Project Structure
+🔍 Multi-Language Code Analysis
 
-```
-AI-Code-Reviewer/
-├── app.py                     # Main Streamlit app (all tabs/UI)
+Supports 9 programming languages
+
+Python
+Java
+C
+C++
+JavaScript
+TypeScript
+Go
+Rust
+Kotlin
+📊 Static Code Analysis
+Function extraction
+Class extraction
+Import detection
+Loop detection
+Conditional detection
+Code metrics
+Interactive dashboards
+Plotly visualizations
+⏱ Time Complexity Estimation
+
+Automatically estimates algorithm complexity such as
+
+O(1)
+O(log n)
+O(n)
+O(n log n)
+O(n²)
+🤖 AI Code Review (Groq + Llama 3.3)
+
+Provides AI-generated reviews including
+
+Code quality
+Bug detection
+Best practices
+Readability improvements
+Performance optimization
+Maintainability suggestions
+🐞 AI Bug Detection
+
+Detects common programming issues
+
+Infinite loops
+Dead code
+Division by zero
+Unused variables
+Duplicate code
+Logical mistakes
+🔐 Security Scanner
+
+Scans source code for security vulnerabilities
+
+SQL Injection
+Hardcoded passwords
+API Keys
+Weak hashing algorithms
+Command Injection
+Unsafe eval()
+Unsafe exec()
+♻ AI Refactoring
+
+Generates cleaner code while preserving functionality.
+
+Includes:
+
+Better naming
+Simplified logic
+Reduced complexity
+Improved readability
+🤝 Code Similarity Checker
+
+Compare two source files and obtain
+
+Similarity percentage
+Matching code blocks
+Shared functions
+Shared classes
+
+Useful for plagiarism detection and duplicate code analysis.
+
+💬 AI Code Chatbot
+
+Ask questions about uploaded source code.
+
+Example:
+
+Explain this function
+Where is the bug?
+How can I optimize this?
+Which function has highest complexity?
+Explain this algorithm
+📄 PDF Report Generation
+
+Generate downloadable reports containing
+
+Code statistics
+AI Review
+Bug Report
+Security Report
+Complexity Analysis
+Recommendations
+🗄 SQLite History
+
+Stores previous analyses including
+
+Filename
+Language
+Review history
+Search
+Trend graphs
+Delete history
+
+
+🏗 System Architecture
+            Source Code
+                  │
+                  ▼
+      Language Detection
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+        ▼                   ▼
+ Python AST         Tree-Sitter Parser
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+         Static Analysis Engine
+                  │
+        ┌─────────┼─────────┐
+        ▼         ▼         ▼
+ Bug Scan   Security Scan  Complexity
+        │         │         │
+        └─────────┼─────────┘
+                  ▼
+           Groq LLM Review
+        (Llama 3.3 70B Model)
+                  │
+      ┌───────────┼───────────┐
+      ▼           ▼           ▼
+ Refactoring   Chatbot   PDF Report
+                  │
+                  ▼
+            Streamlit UI
+
+            
+🛠 Tech Stack
+
+Category	Technology
+Frontend	Streamlit
+Language	Python
+Parsing	Python AST
+Multi-Language Parsing	Tree-sitter
+AI Model	Groq Llama 3.3
+Database	SQLite
+Visualization	Plotly
+Data Processing	Pandas
+Reports	ReportLab
+Environment	dotenv
+
+📂 Project Structure
+AI-Code-Reviewer
+│
+├── app.py
 ├── requirements.txt
-├── .env.example                # Copy to .env and add your Groq key
-├── backend/
-│   ├── parser.py               # Python AST parser
-│   ├── tree_parser.py          # Multi-language Tree-sitter parser (Day 12/13)
-│   ├── analyzer.py              # Python static analysis
-│   ├── multi_analyzer.py        # Generic static analysis for other languages
-│   ├── complexity.py            # Time-complexity estimation
-│   ├── bug_detector.py           # AI bug detection (Day 15)
-│   ├── security_scanner.py       # Security scanner (Day 16)
-│   ├── ai_reviewer.py            # AI code review via Groq (Day 14)
-│   ├── refactorer.py             # AI refactoring via Groq (Day 17)
-│   ├── similarity.py             # Code similarity checker (Day 18)
-│   ├── explainer.py              # Local (offline) code summary
-│   ├── chatbot.py                 # Code Q&A chatbot via Groq
-│   ├── groq_client.py             # Shared Groq API wrapper
-│   └── pdf_report.py              # PDF report generator
-├── database/
-│   └── database.py                # SQLite history persistence
-└── samples/                        # Example files to try the app with
-```
+├── .env.example
+│
+├── backend
+│   ├── parser.py
+│   ├── tree_parser.py
+│   ├── analyzer.py
+│   ├── multi_analyzer.py
+│   ├── complexity.py
+│   ├── bug_detector.py
+│   ├── security_scanner.py
+│   ├── ai_reviewer.py
+│   ├── refactorer.py
+│   ├── similarity.py
+│   ├── chatbot.py
+│   ├── explainer.py
+│   ├── groq_client.py
+│   └── pdf_report.py
+│
+├── database
+│   └── database.py
+│
+└── samples
+⚙ Installation
 
-## 🚀 Getting Started
+Clone the repository
 
-```bash
-# 1. Clone and enter the project
-git clone <your-repo-url>
+git clone https://github.com/RishithThanniru/AI-Code-Reviewer.git
+
+Move into the project
+
 cd AI-Code-Reviewer
 
-# 2. Create a virtual environment
-python -m venv venv
-venv\Scripts\activate        # Windows
-source venv/bin/activate     # macOS/Linux
+Create a virtual environment
 
-# 3. Install dependencies
+python -m venv venv
+
+Activate it
+
+Windows
+
+venv\Scripts\activate
+
+Linux/macOS
+
+source venv/bin/activate
+
+Install dependencies
+
 pip install -r requirements.txt
 
-# 4. (Optional but recommended) enable AI features
-cp .env.example .env
-# then edit .env and add a free key from https://console.groq.com/keys
+Create .env
 
-# 5. Run the app
+GROQ_API_KEY=your_api_key_here
+
+Run the application
+
 streamlit run app.py
-```
+🧪 Sample Files
 
-The app works fully for static analysis, bug detection and the security
-scanner **without** a Groq key. Only the AI Review, AI Refactoring and
-Chatbot tabs require `GROQ_API_KEY` to be set.
+Included under
 
-## 🧪 Try It Out
+samples/
 
-Sample files are included under `samples/` covering several languages and
-intentionally containing bugs/security issues so you can demo every tab:
+Examples include
 
-- `samples/buggy.py` — unused variables, infinite loop, division by zero
-- `samples/insecure.py` — SQL injection, hardcoded password, weak hashing
-- `samples/Sample.java`, `samples/sample.js`, `samples/sample.go` — multi-language parsing demo
+buggy.py
+insecure.py
+Sample.java
+sample.js
+sample.go
+complexity.py
 
-## 📌 Notes on Design Decisions
+📈 Future Improvements
 
-- **`tree-sitter==0.21.3` is pinned intentionally.** Newer `tree-sitter`
-  releases changed the `Language()` constructor signature and are
-  incompatible with `tree-sitter-languages==1.10.2`'s prebuilt grammars —
-  installing the latest `tree-sitter` will break multi-language parsing.
-- **The chatbot sends the file directly as context** instead of using a
-  FAISS + HuggingFace embeddings pipeline. A single source file comfortably
-  fits an LLM's context window, so this avoids a heavy `torch`/
-  `transformers` dependency and a first-run model download — much more
-  reliable for a live demo.
-- **Every AI-powered feature degrades gracefully** when `GROQ_API_KEY`
-  isn't set: the UI shows a clear message instead of crashing, so the rest
-  of the app (static analysis, bug detection, security scan, similarity
-  checker, PDF report) still works out of the box.
+GitHub Pull Request Review
+VS Code Extension
+Docker Deployment
+CI/CD Integration
+Multi-file Project Analysis
+AI Unit Test Generation
+Code Quality Scoring
+Git Commit Review
+Support for 20+ Languages
 
-## 🗺 Roadmap Recap (Days 1–18)
 
-Days 1–11 established the core: AST parsing, static analysis, complexity
-estimation, PDF reporting and SQLite history. Days 12–18 (this update)
-added multi-language support via Tree-sitter, AI-powered bug/security/
-refactoring analysis via Groq, and a code similarity checker — see the
-table above for details.
+💡 Design Decisions
+Tree-sitter Version
+
+The project intentionally uses
+
+tree-sitter==0.21.3
+
+to maintain compatibility with
+
+tree-sitter-languages==1.10.2
+No Vector Database
+
+Instead of using embeddings or FAISS, the chatbot directly sends the uploaded source code to the LLM.
+
+Benefits
+
+Faster
+Lightweight
+No Torch dependency
+Better live demo experience
+Graceful AI Fallback
+
+If no GROQ_API_KEY is configured,
+
+the application still supports
+
+Static Analysis
+Complexity Analysis
+Security Scan
+Bug Detection
+Similarity Checker
+PDF Report
+
+Only AI Review, AI Refactoring, and Chatbot require the API key.
+
+🎯 Learning Outcomes
+
+Through this project I gained practical experience in
+
+Abstract Syntax Trees (AST)
+Tree-sitter Parsing
+Static Code Analysis
+Prompt Engineering
+LLM Integration
+AI-powered Software Engineering
+Secure Code Analysis
+Streamlit Application Development
+SQLite Database Management
+Software Architecture
+PDF Report Generation
+👨‍💻 Author
+
+Thanniru Rishith
+
+B.Tech – Artificial Intelligence & Machine Learning
+Guru Nanak Institute of Technology, Hyderabad
+
+📧 Email: (thannirurishith25@gmail.com)
+
+💼 LinkedIn:
+https://linkedin.com/in/rishiththanniru25
+
+💻 GitHub:
+https://github.com/RishithThanniru
+
+⭐ Support
+
+If you found this project useful,
+
+⭐ Star the repository to support the project and future improvements.
